@@ -1,0 +1,30 @@
+functionsDirectory = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "C:\\Users\\blarv\\Desktop\\MaintApp"
+publishOrigin = "default"
+command = "npm run build"
+commandOrigin = "config"
+functions = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
