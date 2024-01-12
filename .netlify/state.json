@@ -1,3 +1,20 @@
 {
-	"siteId": "8a6328ed-3c32-45dc-94c0-d4be18e100de"
+	"siteId": "8a6328ed-3c32-45dc-94c0-d4be18e100de",
+	"geolocation": {
+		"data": {
+			"city": "Stoke-on-Trent",
+			"country": {
+				"code": "GB",
+				"name": "United Kingdom"
+			},
+			"subdivision": {
+				"code": "ENG",
+				"name": "England"
+			},
+			"timezone": "Europe/London",
+			"latitude": 52.9817,
+			"longitude": -2.1377
+		},
+		"timestamp": 1705064319797
+	}
 }

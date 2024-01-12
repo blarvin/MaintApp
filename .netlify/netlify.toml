@@ -9,8 +9,8 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "C:\\Users\\blarv\\Desktop\\MaintApp"
-publishOrigin = "default"
+publish = "C:\\Users\\blarv\\Desktop\\MaintApp\\build"
+publishOrigin = "config"
 command = "npm run build"
 commandOrigin = "config"
 functions = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
