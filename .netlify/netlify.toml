@@ -4,10 +4,6 @@ plugins = []
 headers = []
 redirects = []
 
-[functions]
-
-[functions."*"]
-
 [build]
 publish = "C:\\Users\\blarv\\Desktop\\MaintApp\\build"
 publishOrigin = "config"
@@ -28,3 +24,7 @@ functions = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
 [build.processing.js]
 
 [build.services]
+
+[functions]
+
+[functions."*"]
