@@ -1,95 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import ItemCard from './ItemCard';
+import CreateNewSibling from './CreateNewSibling';
 
-const AssetCard = ({ asset }) => {
-  return (
-    <AssetCardContainer>
-      <AssetName>{asset.name}</AssetName>
-      <AssetSpecs>
-        {asset.specs.map((spec, index) => (
-          <AssetSpecItem key={index}>{spec}</AssetSpecItem>
-        ))}
-      </AssetSpecs>
-    </AssetCardContainer>
-  );
-};
+const ItemList = () => {
+  const [listitems, setListItems] = useState([]);
 
-const AddNewAsset = ({ onClick }) => {
-  return <AddAssetButton onClick={onClick}>+ New Asset</AddAssetButton>;
-};
-
-const StartScreen = () => {
-  const [assets, setAssets] = useState([
-    { name: "Placeholder Asset", specs: ["Spec 1", "Spec 2", "Spec 3"] },
-  ]);
-
-  const addNewAsset = () => {
-    const newAsset = {
-      name: "New Asset",
-      specs: ["Spec A", "Spec B", "Spec C"],
-    };
-    setAssets([...assets, newAsset]);
+  const addNewSibling = (newItem) => {
+    const newListItems = [...listitems, newItem];
+    setListItems(newListItems);
   };
 
+  useEffect(() => {
+    // Fetch the mock data from your Netlify function
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:9999/.netlify/functions/data_service');
+        const data = await response.json();
+        // Transform the data into the format expected by your ItemCard components
+        const transformedData = data.map(item => ({
+          name: item[0],
+          specs: item.slice(1)
+        }));
+        setListItems(transformedData);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <StartScreenContainer>
+    <ItemListContainer>
       <Content>
         <Header>
           <Title>My Company</Title>
           <Subtitle>Maintenance App</Subtitle>
         </Header>
 
-        {assets.map((asset, index) => (
-          <AssetCard key={index} asset={asset} />
+        {listitems.map((listitem, index) => (
+          <ItemCard key={index} listitem={listitem} />
         ))}
 
-        <AddNewAsset onClick={addNewAsset} />
+        <CreateNewSibling onClick={addNewSibling} />
       </Content>
-    </StartScreenContainer>
+    </ItemListContainer>
   );
 };
 
-const AssetCardContainer = styled.div`
-  background-color: #e6f2ff;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: flex-start;
-  max-width: 400px;
-  min-width: 0px;
-  text-align: left;
-`;
-
-const AssetName = styled.div`
-  font-weight: bold;
-`;
-
-const AssetSpecs = styled.ul`
-  max-width: 400px;
-`;
-
-const AssetSpecItem = styled.li`
-  max-width: 400px;
-`;
-
-const AddAssetButton = styled.button`
-  background-color: #e6f2ff;
-  font-size: 1rem;
-  padding: 1rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  max-width: 400px;
-  min-width: 0px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StartScreenContainer = styled.div`
+const ItemListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,4 +81,4 @@ const Subtitle = styled.p`
   max-width: 400px;
 `;
 
-export default StartScreen;
+export default ItemList;
