@@ -7,6 +7,11 @@ const handler = async (event, context) => {
 
   return {
     statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*", // Allows any origin to access the resource
+      // If you need to be more specific, replace "*" with your front-end app's origin
+      // e.g., "Access-Control-Allow-Origin": "https://myfrontendapp.com"
+    },
     body: JSON.stringify(mockData)
   };
 }
