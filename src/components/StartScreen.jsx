@@ -14,8 +14,12 @@ const ItemList = () => {
   useEffect(() => {
     // Fetch the mock data from your Netlify function
     const fetchData = async () => {
+        // Define the base URL depending on the environment
+        const baseUrl = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:9999/.netlify/functions'
+        : '/.netlify/functions';
       try {
-        const response = await fetch('http://localhost:9999/.netlify/functions/data_service');
+        const response = await fetch(`${baseUrl}/data_service`);
         const data = await response.json();
         // Transform the data into the format expected by your ItemCard components
         const transformedData = data.map(item => ({
