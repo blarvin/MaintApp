@@ -12,7 +12,7 @@ const ItemList = () => {
   };
 
   useEffect(() => {
-    // Fetch the mock data from your Netlify function
+  
     const fetchData = async () => {
         // Define the base URL depending on the environment
         const baseUrl = process.env.NODE_ENV === 'development'
@@ -21,10 +21,13 @@ const ItemList = () => {
       try {
         const response = await fetch(`${baseUrl}/data_service`);
         const data = await response.json();
-        // Transform the data into the format expected by your ItemCard components
+        // Get the name field value for the ItemCard components
         const transformedData = data.map(item => ({
-          name: item[0],
-          specs: item.slice(1)
+          ...item,
+          name: item.name
+          .replace(/[^a-zA-Z0-9]/g, " ")
+          .replace(/ +(?= )/g, "")
+          .trim()
         }));
         setListItems(transformedData);
       } catch (error) {

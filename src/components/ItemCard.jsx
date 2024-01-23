@@ -5,11 +5,11 @@ const ItemCard = ({ listitem }) => {
     return (
       <ItemCardContainer>
         <ItemName>{listitem.name}</ItemName>
-        <ItemSpecs>
+        {/* <ItemSpecs>
           {listitem.specs.map((spec, index) => (
             <ItemSpec key={index}>{spec}</ItemSpec>
           ))}
-        </ItemSpecs>
+        </ItemSpecs> */}
       </ItemCardContainer>
     );
 };
