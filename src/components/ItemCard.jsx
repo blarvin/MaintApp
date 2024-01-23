@@ -32,12 +32,12 @@ const ItemName = styled.div`
   font-weight: bold;
 `;
 
-const ItemSpecs = styled.ul`
-  max-width: 400px;
-`;
+// const ItemSpecs = styled.ul`
+//   max-width: 400px;
+// `;
 
-const ItemSpec = styled.li`
-  max-width: 400px;
-`;
+// const ItemSpec = styled.li`
+//   max-width: 400px;
+// `;
 
 export default ItemCard;
