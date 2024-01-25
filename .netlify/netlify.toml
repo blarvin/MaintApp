@@ -1,8 +1,8 @@
 functionsDirectory = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
 functionsDirectoryOrigin = "config-v1"
+headersOrigin = "config"
+redirectsOrigin = "config"
 plugins = []
-headers = []
-redirects = []
 
 [build]
 publish = "C:\\Users\\blarv\\Desktop\\MaintApp\\build"
@@ -25,6 +25,27 @@ functions = "C:\\Users\\blarv\\Desktop\\MaintApp\\netlify\\functions"
 
 [build.services]
 
+[dev]
+publish = "build"
+
 [functions]
 
 [functions."*"]
+
+[[headers]]
+for = "*.css"
+
+[headers.values]
+Content-Type = "text/css"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
